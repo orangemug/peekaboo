@@ -1,1 +1,147 @@
-My GitHub Page
+<html>
+<head>
+  <title>peekaboo.js</title>
+  <link rel="stylesheet" media="all" href="css/reset.css"/>   
+  <link rel="stylesheet" media="all" href="css/app.css"/> 
+  <link rel="stylesheet" media="all" href="external/sh_whitengrey.min.css"/> 
+  <script src="external/sh_main.min.js"></script>
+  <script src="external/sh_html.min.js"></script>
+  <script src="external/sh_javascript.min.js"></script>
+</head>
+<body onload="sh_highlightDocument();">
+  <div class="border">
+  <div class="container">
+    <header>
+      <h1>Peekaboo</h1>
+      <h2>Android style pull down menu, for mobile and non-mobile browsers</h2>
+    </header>
+
+    <section id="demo1" class="holder">    
+      <div class="area">
+        <div class="peekaboo"> 
+          <div class="bar">
+            <a class="folder"></a>
+            <a class="gear"></a>
+            <a class="mail"></a>
+            <a class="full-screen"></a>
+          </div>
+          <div class="handle"></div> 
+        </div>
+      </div>
+      <a class="switch"></a>
+    </section>
+
+    <section id="demo2" class="holder">    
+      <div class="area">
+        <div class="peekaboo"> 
+          <div class="bar">
+            <a class="folder"></a>
+            <a class="gear"></a>
+            <a class="mail"></a>
+            <a class="full-screen"></a>
+            <a class="folder"></a>
+            <a class="gear"></a>
+            <a class="mail"></a>
+            <a class="full-screen"></a>
+            <a class="folder"></a>
+            <a class="gear"></a>
+            <a class="mail"></a>
+            <a class="full-screen"></a>
+            <a class="folder"></a>
+            <a class="gear"></a>
+            <a class="mail"></a>
+            <a class="full-screen"></a>
+          </div>
+          <div class="handle"></div> 
+        </div>
+      </div>
+      <a class="switch"></a>
+    </section>
+
+    <section>
+      <h3>Basic Usage</h3>
+      <p>
+        To use simply define a your <i>peekaboo</i> menu in the following way, the library only expects a block element with a class of <i>peekaboo</i> and a block element with class <i>handle</i> inside:
+        <pre class="sh_html">&lt;div class="peekaboo"&gt;
+  &lt;div&gt;
+    &lt;!-- Menu contents go here... --&gt;
+  &lt;/div&gt;
+  &lt;div class="handle"&gt;
+    &lt;!-- Style this appropriately --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </p>
+    </section>
+    
+    <section>
+      <h3>Configuration & Control</h3>
+      <p>
+        There are also a number of configuration items
+        <pre class="sh_javascript">$(document).ready(function() {
+  peekaboo.panel('#jqueryId').configure({
+    'animation_speed': 3,    // Speed in milliseconds
+    'initial_state': 'open', // Initial state onload
+    'open_hook': function() {
+      /* Hook called on open */
+    },
+    'close_hook': function() {
+      /* Hook called when closed */
+    }
+  })
+})</pre>        
+      </p>
+
+      <p>
+        You can also control the menu programatically
+        <pre class="sh_javascript">peekaboo.panel('#jqueryId').open();
+peekaboo.panel('#jqueryId').close();
+peekaboo.panel('#jqueryId').toggle();</pre>        
+      </p>
+      <p>
+        The above will animate the panel between the open and close state. If you want to disable this pass <b>true</b> to any of these procs:
+        <pre class="sh_javascript">// Amination disabled
+peekaboo.panel('#jqueryId').open(true);
+peekaboo.panel('#jqueryId').close(true);
+peekaboo.panel('#jqueryId').toggle(true);</pre>        
+      </p>
+      </p>
+    </section>
+
+    <footer>
+      <p class="small">Graphics for this page are sourced from this awesome collection <a href="pixelpressicons.com">pixelpressicons.com</a></p>
+      <a href="http://orangemug.co.uk">orangemug.co.uk</a>
+    </footer>
+  </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="src/peekaboo.js"></script>
+  <script>
+    var demos = [
+      "#demo1",
+      "#demo2"
+    ]
+    var currDemo = 0
+
+    $(document).ready(function() {
+      $('.switch').bind('click', function() {
+        currDemo++
+        if(currDemo >= demos.length)
+          currDemo = 0
+        
+        for(var i=0; i<demos.length; i++) {
+          var selector = demos[i]
+          var elem = $(selector)
+          if(i == currDemo)
+            elem.css('display', "inline-block");
+          else
+            elem.css('display', "none");
+        }
+        
+      })
+    })
+  </script>
+  <a href="https://github.com/orangemug/peekaboo"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets1.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_darkblue_121621.png&path=" alt="Fork me on GitHub"></a>
+</body>
+</html>
+
+

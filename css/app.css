@@ -1,0 +1,203 @@
+body {
+  text-align: center;
+  background: url(../images/bg.png);
+  background-color: black;
+}
+
+@font-face {
+  font-family: 'Lobster13Regular';
+  src: url('../fonts/Lobster/Lobster_1.3-webfont.eot');
+  src: local('☺'), url('../fonts/Lobster/Lobster_1.3-webfont.woff') format('woff'), url('../fonts/Lobster/Lobster_1.3-webfont.ttf') format('truetype'), url('../fonts/Lobster/Lobster_1.3-webfont.svg#webfont1MhCsZSr') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+p.small {
+  margin: 15;
+  font-size: small;  
+}
+
+pre {
+  text-align: left;
+  background-color: #E0EBF5 !important;
+  padding: 8px;
+}
+
+.container {      
+  margin-left: auto;
+  margin-right: auto;  
+  background-color: #fff;
+  padding-top: 55px;
+}
+
+.border {
+  margin-left: auto;
+  margin-right: auto;  
+  width: 600px;  
+  border-left-width: 38px;
+  border-right-width: 38px;  
+  
+  -o-border-image: url('../images/border.png') 27 round round;
+  -icab-border-image: url('../images/border.png') 27 round round;
+  -khtml-border-image: url('../images/border.png') 27 round round;
+  -moz-border-image: url('../images/border.png') 27 round round;
+  -webkit-border-image: url('../images/border.png') 37 round round;
+  border-image: url('../images/border.png') 27 round round;
+  
+}
+
+a {
+  color: #557FA4;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+section {
+  display: block;
+  text-align: left;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 35px;  
+}
+
+footer {
+  width: 600;
+  display: block;
+  padding-bottom: 30px;  
+}
+
+h1 {
+  color: #164A78;
+  font: 60px/68px 'Lobster13Regular', Arial, sans-serif;letter-spacing: 0;
+}  
+
+h2 {
+  color: #557FA4;
+  font: 20px/28px 'Lobster13Regular', Arial, sans-serif;letter-spacing: 0;
+} 
+
+h3 {
+  color: #557FA4;
+  font: 30px/38px 'Lobster13Regular', Arial, sans-serif;letter-spacing: 0;
+}
+
+body {
+  font: normal Arial, sans-serif;letter-spacing: 0;
+}
+
+
+
+
+
+.peekaboo {      
+  position:relative;
+  width:100%;      
+  /*top:-115px;*/
+  left:0;
+  z-index:999;
+  background:#B7D0EA
+}
+  
+.peekaboo .handle {
+  -webkit-user-select:none;      
+  left:0;
+  width:100%;
+  height:27px;
+  border-top:1px solid #A8C6E5;
+  border-bottom:1px solid #A8C6E5;
+  background-color:#BDD5EC;
+  background: url(../images/handle.png) no-repeat 50% 60%;
+  background: url(../images/handle.png) no-repeat 50% 60%, -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #D2E5F6), color-stop(0.1, #B8D1EA), color-stop(0.8, #9EBEDE));
+}
+
+.peekaboo ul {
+  display:block;
+  width:auto;
+}
+
+.peekaboo li {
+  display:block;
+  float:left;
+  margin:20px 10px;
+  text-align:center;
+  font-weight:bold;
+  color:#fff;
+  text-shadow:0 1px 1px #000;
+}
+
+.peekaboo li img {
+  display:block;
+  margin-bottom:4px;
+}
+
+
+
+.switch {
+  cursor:hand;  
+  display: block;
+  position: relative;
+  top: 2px;
+  left: 90px;
+  width: 60px;
+  height: 60px;
+}
+
+
+#demo1 {}
+#demo2 {display: none;}
+
+#demo1 .area {
+  background-image: url('../images/robin_bg.jpg');
+}
+
+#demo2 .area {
+  background-image: url('../images/peekaboo_bg2.jpg');
+}
+
+
+
+
+
+
+.holder {
+  margin-left: 160px;
+  margin-right: 160px;
+  margin-top: 40px;
+  display: inline-block;
+  background-image: url('../images/iphone.png');
+  padding-top: 91px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 92px;
+  width: 241px;    
+  height: 347px;  
+}
+
+.area {
+  height: 100%;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.bar {      
+  text-align: center
+}
+
+.bar img {
+  padding: 10px;
+}
+
+.bar a {      
+  padding: 10px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;      
+}
+
+.bar a.folder      {background: url(../images/Folder.png) no-repeat 50% 50%;}
+.bar a.gear        {background: url(../images/Gear.png) no-repeat 50% 50%;}
+.bar a.mail        {background: url(../images/Closed-Mail.png) no-repeat 50% 50%;}
+.bar a.full-screen {background: url(../images/Widescreen.png) no-repeat 50% 50%;}
