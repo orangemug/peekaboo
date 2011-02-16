@@ -1,7 +1,7 @@
 (function() {
   var Peekaboo, PeekabooItem;
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
-  PeekabooItem = function() {
+  PeekabooItem = (function() {
     function PeekabooItem(elem) {
       this.elem = elem;
       this.handle = this.elem.find('.handle');
@@ -126,10 +126,15 @@
         duration = 0;
       }
       if (prefix = this._get_transform_prefix(this.elem[0])) {
-        this.elem.css("" + prefix + "transition-property", "" + prefix + "transform");
+        clearTimeout(this.timeout);
+        this.elem.css("" + prefix + "transition-property", "all");
         this.elem.css("" + prefix + "transition-duration", "" + duration + "ms");
-        return this.elem.css("" + prefix + "transform", "translate3d(0," + pos + "px,0)");
+        this.elem.css("" + prefix + "transform", "translate3d(0," + pos + "px,0)");
+        return this.timeout = setTimeout(__bind(function() {
+          return this.elem.css("" + prefix + "transition-property", "none");
+        }, this), duration + 100);
       } else {
+        console.warn("JQUERY");
         return this.elem.animate({
           'top': pos
         }, duration);
@@ -140,7 +145,7 @@
       _results = [];
       for (n in opts) {
         v = opts[n];
-        _results.push(function() {
+        _results.push((function() {
           switch (n) {
             case "animation_speed":
               return this.animDuration = parseInt(v);
@@ -156,7 +161,7 @@
             case "close_hook":
               return this.openHooks.push(v);
           }
-        }.call(this));
+        }).call(this));
       }
       return _results;
     };
@@ -178,8 +183,8 @@
       }
     };
     return PeekabooItem;
-  }();
-  Peekaboo = function() {
+  })();
+  Peekaboo = (function() {
     function Peekaboo() {
       this.peekabooItems = [];
     }
@@ -201,10 +206,9 @@
         elem = $(elem);
         return this.add(new PeekabooItem(elem));
       }, this));
-      return;
     };
     return Peekaboo;
-  }();
+  })();
   $('document').ready(__bind(function() {
     window.peekaboo = new Peekaboo;
     return window.peekaboo.check();

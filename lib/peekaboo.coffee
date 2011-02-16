@@ -136,10 +136,18 @@ class PeekabooItem
 
     # See if we can use the new css3 bits to speed it up a little.
     if prefix = @_get_transform_prefix(@elem[0])
-      @elem.css "#{prefix}transition-property", "#{prefix}transform"
+      clearTimeout @timeout
+      
+      @elem.css "#{prefix}transition-property", "all"
       @elem.css "#{prefix}transition-duration", "#{duration}ms"
-      @elem.css "#{prefix}transform",           "translate3d(0,#{pos}px,0)"
+      @elem.css "#{prefix}transform", "translate3d(0,#{pos}px,0)"
+      
+      # Turn off the transition once its complete.
+      @timeout = setTimeout () =>      
+        @elem.css "#{prefix}transition-property", "none"
+      ,(duration+100)
     else
+      console.warn "JQUERY"
       @elem.animate({
         'top': pos
       }, duration)
