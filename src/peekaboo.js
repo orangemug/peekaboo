@@ -118,7 +118,7 @@
       }
       return null;
     };
-    PeekabooItem.prototype._move = function(pos, animOff) {
+    PeekabooItem.prototype._move = function(pos, animOff, callback) {
       var duration, prefix;
       pos = this._checkBounds(pos);
       duration = this.animDuration;
@@ -131,7 +131,10 @@
         this.elem.css("" + prefix + "transition-duration", "" + duration + "ms");
         this.elem.css("" + prefix + "transform", "translate3d(0," + pos + "px,0)");
         return this.timeout = setTimeout(__bind(function() {
-          return this.elem.css("" + prefix + "transition-property", "none");
+          this.elem.css("" + prefix + "transition-property", "none");
+          if (callback) {
+            return callback();
+          }
         }, this), duration + 100);
       } else {
         console.warn("JQUERY");
@@ -167,13 +170,16 @@
     };
     PeekabooItem.prototype.open = function(animOff) {
       this._setupCoords();
+      this.container.css("height", this.elem.height());
       this.status = 'open';
       return this._move(this.openPos, animOff);
     };
     PeekabooItem.prototype.close = function(animOff) {
       this._setupCoords();
       this.status = 'close';
-      return this._move(this.closedPos, animOff);
+      return this._move(this.closedPos, animOff, __bind(function() {
+        return this.container.css("height", this.handle.height());
+      }, this));
     };
     PeekabooItem.prototype.toggle = function(animOff) {
       if (this.status === 'open') {

@@ -127,7 +127,7 @@ class PeekabooItem
         return prefix
     return null
 
-  _move: (pos, animOff) ->
+  _move: (pos, animOff, callback) ->
     pos = @_checkBounds(pos)
 
     duration = @animDuration
@@ -143,8 +143,9 @@ class PeekabooItem
       @elem.css "#{prefix}transform", "translate3d(0,#{pos}px,0)"
       
       # Turn off the transition once its complete.
-      @timeout = setTimeout () =>      
+      @timeout = setTimeout () =>
         @elem.css "#{prefix}transition-property", "none"
+        callback() if callback
       ,(duration+100)
     else
       console.warn "JQUERY"
@@ -171,15 +172,20 @@ class PeekabooItem
 
   open: (animOff) ->
     @_setupCoords()
+        
+    # Set the container to the correct height
+    @container.css "height", @elem.height()
+        
     @status = 'open'
-    @_move(@openPos, animOff)
+    @_move @openPos, animOff
 
 
   close: (animOff) ->
     @_setupCoords()
     @status = 'close'
-    @_move(@closedPos, animOff)
-
+    @_move @closedPos, animOff, () =>
+      # Set the container to the correct height
+      @container.css "height", @handle.height()
 
   toggle: (animOff) ->
     if @status == 'open'
